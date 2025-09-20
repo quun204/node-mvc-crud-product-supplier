@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Products</h1>
+    <a href="/products/new" class="btn">➕ Add Product</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Supplier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td>$<%= product.price %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.supplierId ? product.supplierId.name : 'N/A'
+                    %></td>
+                <td>
+                    <a href="/products/<%= product._id %>/edit"
+                        class="btn small">✏️ Edit</a>
+                    <form action="/products/<%= product._id %>?_method=DELETE"
+                        method="POST">
+                        <button type="submit" class="btn danger small">🗑️
+                            Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('../partials/footer') %>
