@@ -35,5 +35,5 @@ node seed.js
 Start server:
 
 bash
-Sao chép mã
+
 npm start
